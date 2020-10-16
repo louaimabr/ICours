@@ -1,0 +1,291 @@
+@import url("./Matieres.scss");
+@import url("./HomeDisconnect.scss");
+@import url("https://fonts.googleapis.com/css2?family=Arvo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+$rose: #d83f87;
+$violet: #2a1b3d;
+$bleu: #3731a5;
+$orange: #eea9a1;
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+* {
+  z-index: 98;
+}
+
+svg {
+  z-index: 1;
+}
+* {
+  font-family: "Arvo", serif;
+}
+@mixin flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chargement {
+  background-color: $orange;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.notfound {
+  height: 90vh;
+  width: 100vw;
+  @include flexCenter();
+  background-color: $orange;
+  color: white;
+  text-align: center;
+  font-size: 2.5vw;
+}
+.App {
+  background-color: $orange;
+  height: 100vh;
+  width: 100vw;
+}
+.nav {
+  width: 100vw;
+  height: 10vh;
+  background-color: $violet;
+  @include flexCenter();
+  border-bottom: 10px solid white;
+  z-index: 99;
+  .navCenter {
+    height: 100%;
+    @include flexCenter();
+    div {
+      @include flexCenter();
+      h1 {
+        margin: 0;
+        color: white;
+        font-family: "Permanent Marker", cursive;
+      }
+      hr {
+        width: 2px;
+        height: 50px;
+        background-color: rgb(255, 255, 255);
+        margin: 20px;
+      }
+      img {
+        height: 50px;
+        width: 50px;
+      }
+      margin: 20px;
+    }
+    ul {
+      margin: 0;
+      list-style: none;
+      display: flex;
+    }
+    a,
+    li {
+      color: black;
+      margin: 7px;
+      color: white;
+      cursor: pointer;
+      &:hover {
+        font-weight: bold;
+      }
+    }
+  }
+}
+.Connect {
+  @include flexCenter();
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  height: 30%;
+  width: 50%;
+  h2 {
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+    font-weight: bold;
+  }
+  button {
+    width: 50%;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid $orange;
+    padding: 10px;
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+}
+.CreateCourse {
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  div {
+    @include flexCenter();
+    width: 100%;
+    height: 100%;
+    .userInfo {
+      width: 300px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: $violet;
+      border-bottom-right-radius: 12px;
+      border: 1px solid white;
+      border-left: none;
+      border-top: none;
+      img {
+        height: 80%;
+        border-radius: 50%;
+        border: 2px solid white;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        p {
+          margin: 0;
+          font-style: italic;
+          span {
+            font-weight: bold;
+            font-style: normal;
+          }
+        }
+      }
+    }
+    .welcome {
+      @include flexCenter();
+      width: 85%;
+      color: white;
+      h2 {
+        font-family: "Permanent Marker", cursive;
+        text-align: center;
+      }
+    }
+  }
+}
+.btnCreate {
+  height: 70%;
+  width: 100%;
+  @include flexCenter();
+  button {
+    padding: 25px;
+    border: none;
+    border-radius: 5px;
+    z-index: 2;
+    &:hover {
+      background-color: rgb(255, 244, 244);
+    }
+  }
+}
+.formNote {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  .enregistrer {
+    background-color: rgb(34, 169, 34);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(11, 116, 11);
+    }
+  }
+  .generate {
+    background-color: rgb(34, 144, 169);
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(35, 170, 211);
+    }
+  }
+  .editorParent {
+    .Editor {
+      width: 100%;
+    }
+  }
+}
+.divTitleCourse {
+  height: 15vh;
+  @include flexCenter();
+  background-color: rgb(75, 75, 75);
+  color: white;
+  h3 {
+    margin: 0;
+  }
+  .flecheGauche {
+    height: 100%;
+    width: 5%;
+    img {
+      margin: 10px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+  .titleDate {
+    width: 95%;
+    height: 100%;
+    transform: translateX(-3%);
+    @include flexCenter();
+    flex-direction: column;
+  }
+  .privacy {
+    @include flexCenter();
+    height: 20%;
+    div {
+      height: 100%;
+      margin: 5px;
+    }
+  }
+}
+#modalForm {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:empty {
+    display: none;
+  }
+  div {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    button {
+      width: 80%;
+      background-color: rgb(233, 61, 61);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .submitForm {
+      width: 80%;
+      background-color: rgb(61, 233, 61);
+      border: none;
+      cursor: pointer;
+    }
+  }
+}
