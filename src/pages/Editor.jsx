@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import { Redirect } from "react-router-dom";
 import { MatiereContext } from "../providers/matiereProvider";
+
+//Utils
 import { setLeçon } from "../utils/utils";
-import html2pdf from 'html2pdf.js'
+import { editorConfig } from "../utils/configEditor"
 //Components
 import ModalConfirm from "../components/ModalConfirm";
 
@@ -61,10 +63,6 @@ const Editor = (props) => {
       setNavigate(true);
     }
   };
-  const generatePdf = () =>{
-    const e = document.querySelector('.ck-content')
-    html2pdf(e).save()
-  }
   return (
     <>
       {modal && (
@@ -85,8 +83,8 @@ const Editor = (props) => {
         <div className="divTitleCourse">
           <div className="flecheGauche">
             <img
-              src={require("../img/flecheGauche.svg")}
-              alt="Fleche Gauche"
+              src={require("../img/flecheGauche.png")}
+              alt="Retourner"
               onClick={handleAlertHome}
             />
           </div>
@@ -98,9 +96,6 @@ const Editor = (props) => {
         <button className="enregistrer" onClick={submitContent}>
           Enregistrer
         </button>
-        <button className="generate" onClick={generatePdf}>
-           Générer un fichier PDF
-        </button>
         <div style={{ display : 'flex' }}
           className="editorParent"
         >
@@ -110,35 +105,7 @@ const Editor = (props) => {
               onInit={(editor) => {
                 //bkuud
               }}
-              config={{
-                toolbar: [
-                  'heading',
-                  'undo',
-                  'redo',
-                  '|',
-                  'fontSize',
-                  'fontFamily',
-                  'fontColor',
-                  'fontBackgroundColor',
-                  '|',
-                  'bold',
-                  'underline',
-                  'italic',
-                  'alignment',
-                  'highlight',
-                  '|',
-                  'link',
-                  'bulletedList',
-                  'numberedList',
-                  'horizontalLine',
-                  '|',
-                  'blockQuote',
-                  'insertTable',
-                  'indent',
-                  'outdent',
-                  '|'
-                ],
-              }}
+              config={editorConfig}
               data={currentContent}
               onChange={handleCkeditorState}
             />

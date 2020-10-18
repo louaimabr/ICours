@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../scss/App.scss";
 //Components
-import Navbar from "./Navbar";
+import NavbarConnect from "./Navbar";
 import CreateCourse from "./CreateCourse";
 import ModalForm from "./ModalForm";
 import Form from "./Form";
@@ -44,7 +44,7 @@ class App extends Component<any, IState> {
     return (
       <SvgTemplate>
         <div className="App">
-          <Navbar />
+          <NavbarConnect />
           <CreateCourse modalTrue={modalTrue} user={user} />
           {modal && (
             <ModalForm>

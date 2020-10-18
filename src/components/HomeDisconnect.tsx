@@ -13,7 +13,7 @@ const HomeDisconnect = () => {
             cours à distance facilement
           </p>
           <button onClick={signInWithGoogle}>
-            Inscrivez vous avec{" "}
+            Inscrivez / Connectez vous avec
             <img src={require("../img/google.png")} alt="" /> gratuitement
           </button>
         </div>

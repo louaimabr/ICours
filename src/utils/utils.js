@@ -1,5 +1,4 @@
 import { firestore } from "../firebase";
-
 //Prendre les info depuis la bd et set le state dans app pour synchroniser les duex
 export const setMatiereDB = async (user, setState) => {
   return await firestore

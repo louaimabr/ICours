@@ -35,6 +35,7 @@ const Form: FunctionComponent<IProps> = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if(newTitreCours === '') return;
     const matieresleconSplice = [...matieresLecon];
 
     //Verification si la matiére à déja une matiére ou il faut la crée
@@ -89,6 +90,12 @@ const Form: FunctionComponent<IProps> = ({
       })
     }
   };
+  const handleKeyUp = (event : React.KeyboardEvent<HTMLDivElement>) =>{
+    if(event.key === 'Enter'){
+      event.preventDefault()
+      handleSubmit(event)
+    }
+  }
   if (redirect) {
     return (
       <Redirect
@@ -137,6 +144,8 @@ const Form: FunctionComponent<IProps> = ({
         <label htmlFor="title">Entrez le titre de ce cours</label>
         <input
           onChange={(e) => handleChange(e)}
+          onBlur={(e) => handleChange(e)}
+          onKeyDown={handleKeyUp}
           value={newTitreCours}
           type="text"
           id="title"

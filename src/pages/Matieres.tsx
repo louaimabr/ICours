@@ -6,14 +6,13 @@ import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 //Components
 import ListeMatieres from "../components/ListeMatieres";
-import Navbar from "../components/Navbar";
+import NavbarConnect from "../components/Navbar";
 import SvgTemplate from "../components/SvgTemplate";
 interface MATIERE__CONTEXT {
   matieresLecon: Array<MATIERE__STATE>;
   setMatieresLecon: (arr: Array<MATIERE__STATE>) => void;
 }
 type SEARCH__ARR={
-  
     Lecon: string,
     to: {
       pathname: string,
@@ -33,6 +32,7 @@ const Matieres: FC = () => {
   const [searchArr, setSearchArr] = useState<Array<SEARCH__ARR>>([]);
   const [search, setSearch] = useState("");
   const { matieresLecon }: MATIERE__CONTEXT = useContext(MatiereContext);
+  
   if (!user) return <Redirect to="/" />;
   const handleChange = (e) => {
     setSearchArr([]);
@@ -44,6 +44,7 @@ const Matieres: FC = () => {
     matieresLeconSplice.map((m) => {
       const [currentLecon] = m.leçon;
       if (
+        currentLecon &&
         currentLecon.titre.toLowerCase().includes(currentValue.toLowerCase()) &&
         currentValue !== ""
       ) {
@@ -70,18 +71,22 @@ const Matieres: FC = () => {
   return (
     <SvgTemplate>
       <div className="Matieres">
-        <Navbar />
+        <NavbarConnect />
         <div className="research">
-          <input
-            type="text"
-            placeholder="Rechercher une leçon"
-            onChange={handleChange}
-            value={search}
-          />
-          <div style={{ display: search !== "" ? "block" : "none" }}>
+          <div>
+            <input
+              type="text"
+              placeholder="Rechercher une leçon"
+              onChange={handleChange}
+              value={search}
+            />
+            <div><img src={require('../img/loupe.png')} alt="Loupe"/></div>
+          </div>
+          <div className="researchResult" style={{ display: search !== "" ? "block" : "none" }}>
             {searchArr.map((l) => (
               <Link key={l.Lecon} to={l.to}>
                 <p>{l.Lecon}</p>
+                <hr/>
               </Link>
             ))}
           </div>

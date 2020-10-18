@@ -3,274 +3,282 @@ $violet: #2a1b3d;
 $bleu: #44318d;
 $orange: #eea9a1;
 @mixin trianngles {
-  display: inline-block;
-  height: 0;
-  width: 0;
-  border-top: 10vh solid #eea9a1;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-top: 10vh solid #eea9a1;
 }
 @mixin flexCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .homeDisconnect {
-  background-color: $orange;
-  height: auto;
-  width: 100vw;
+    background-color: $orange;
+    height: auto;
+    width: 100vw;
 }
 .navDisconnect {
-  width: 90vw;
-  height: 10vh;
-  margin: 0 auto;
-  background-color: $violet;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 5px solid white;
-  transition: 0.9s;
-  z-index: 99;
-  #triangle-right {
-    @include trianngles();
-    border-right: 100px solid transparent;
-  }
-  .navCenter {
-    height: 100%;
-    @include flexCenter();
-    div {
-      @include flexCenter();
-      h1 {
-        margin: 0;
-        color: white;
-      }
-      hr {
-        width: 2px;
-        height: 50px;
-        background-color: rgb(255, 255, 255);
-        margin: 20px;
-      }
-      img {
-        height: 50px;
-        width: 50px;
-      }
-      margin: 20px;
-    }
-    a {
-      color: black;
-      margin-top: 7px;
-      color: white;
-      &:hover {
-        font-weight: bold;
-      }
-    }
-  }
-  #triangle-left {
-    @include trianngles();
-    border-left: 100px solid transparent;
-  }
-}
-.intro {
-  width: 100vw;
-  height: 46.5vh;
-  @include flexCenter();
-  .connectIntro {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 25%;
-    height: 100%;
-    h2 {
-      font-size: 3vw;
-      font-weight: bold;
-      color: white;
-    }
-    p {
-      font-size: 1vw;
-      color: white;
-    }
-    img {
-      height: 20px;
-      width: 20px;
-      margin: 2px;
-    }
-    button {
-      background-color: $violet;
-      border: none;
-      color: white;
-      padding: 5px;
-    }
-  }
-  img {
-    height: 80%;
-  }
-}
-.idées {
-  height: 40vh;
-  width: 100vw;
-  background-color: $violet;
-  .interrogation {
-    width: 100%;
-    height: 50%;
+    width: 90vw;
+    height: 10vh;
+    margin: 0 auto;
+    background-color: $violet;
     display: flex;
     align-items: center;
-    justify-content: center;
-    img {
-      height: 120px;
-      width: 120px;
-    }
-  }
-  .contentIdées {
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    p {
-      color: white;
-      width: 30%;
-      font-size: 20px;
-      letter-spacing: 3px;
-    }
-    hr {
-      width: 2px;
-      height: 50px;
-      background-color: rgb(255, 255, 255);
-      margin: 20px;
-    }
-  }
-}
-@media screen and (max-width: 1260px) {
-  .intro {
-    .connectIntro {
-      img {
-        height: 20px;
-        width: 20px;
-        margin: 2px;
-      }
-      button {
-        padding: 10px;
-      }
-    }
-  }
-}
-@media screen and (max-width: 820px) {
-  .navDisconnect {
-    width: 80vw;
-    height: 8vh;
-    border-bottom: 7px solid white;
+    justify-content: space-between;
+    border-bottom: 5px solid white;
+    transition: 0.9s;
+    z-index: 99;
     #triangle-right {
-      @include trianngles();
-      border-right: 100px solid transparent;
+        @include trianngles();
+        border-right: 100px solid transparent;
     }
     .navCenter {
-      height: 100%;
-      @include flexCenter();
-      div {
+        height: 100%;
         @include flexCenter();
-        h1 {
-          font-size: 25px;
+        div {
+            @include flexCenter();
+            h1 {
+                margin: 0;
+                color: white;
+            }
+            hr {
+                width: 2px;
+                height: 50px;
+                background-color: rgb(255, 255, 255);
+                margin: 20px;
+            }
+            img {
+                height: 50px;
+                width: 50px;
+            }
+            margin: 20px;
         }
-        hr {
-          height: 25px;
+        a {
+            color: black;
+            margin-top: 7px;
+            color: white;
+            &:hover {
+                font-weight: bold;
+            }
+        }
+    }
+    #triangle-left {
+        @include trianngles();
+        border-left: 100px solid transparent;
+    }
+}
+.intro {
+    width: 100vw;
+    height: 46.5vh;
+    @include flexCenter();
+    .connectIntro {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 25%;
+        height: 100%;
+        h2 {
+            font-size: 3vw;
+            font-weight: bold;
+            color: white;
+        }
+        p {
+            font-size: 1vw;
+            color: white;
         }
         img {
-          height: 25px;
-          width: 25px;
+            height: 20px;
+            width: 20px;
+            margin: 2px;
         }
-      }
-      a {
-        font-size: 10px;
-      }
-    }
-    #triangle-left {
-      @include trianngles();
-      border-left: 100px solid transparent;
-    }
-  }
-  .intro {
-    height: auto;
-    flex-direction: column;
-    .connectIntro {
-      width: 50%;
-      margin-top: 30px;
-      margin-left: 10%;
-
-      img {
-        height: 15px;
-        width: 15px;
-        margin: 2px;
-      }
-      button {
-        padding: 5px;
-        font-size: 14px;
-      }
+        button {
+            background-color: $violet;
+            border: none;
+            color: white;
+            padding: 5px;
+        }
     }
     img {
-      width: 50%;
+        height: 80%;
     }
-  }
-  .idées {
+}
+.idées {
+    height: 40vh;
+    width: 100vw;
+    background-color: $violet;
     .interrogation {
-      img {
-        height: 80px;
-        width: 80px;
-      }
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            height: 120px;
+            width: 120px;
+        }
     }
     .contentIdées {
-      p {
-        width: 40%;
-        font-size: 15px;
-        margin: 0;
-      }
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        p {
+            color: white;
+            width: 25%;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+        hr {
+            width: 2px;
+            height: 50px;
+            background-color: rgb(255, 255, 255);
+            margin: 20px;
+        }
     }
-  }
+}
+@media screen and (max-width: 1260px) {
+    .intro {
+        .connectIntro {
+            img {
+                height: 20px;
+                width: 20px;
+                margin: 2px;
+            }
+            button {
+                padding: 10px;
+            }
+        }
+    }
+}
+@media screen and (max-width: 820px) {
+    .navDisconnect {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        #triangle-right {
+            display: none;
+        }
+        #triangle-left {
+            display: none;
+        }
+        .navCenter {
+            height: 100%;
+            @include flexCenter();
+            div {
+                @include flexCenter();
+                h1 {
+                    font-size: 25px;
+                }
+                hr {
+                    height: 25px;
+                }
+                img {
+                    height: 25px;
+                    width: 25px;
+                }
+            }
+            a {
+                font-size: 10px;
+            }
+        }
+    }
+    .intro {
+        height: auto;
+        flex-direction: column;
+        .connectIntro {
+            width: 40%;
+            margin-top: 20px;
+            h2 {
+                font-size: 4vw;
+                font-weight: bold;
+                color: white;
+            }
+            p {
+                font-size: 1.8vw;
+                color: white;
+            }
+            img {
+                height: 15px;
+                width: 15px;
+                margin: 2px;
+            }
+            button {
+                padding: 5px;
+                font-size: 1.5vw;
+            }
+        }
+        img {
+            width: 50%;
+        }
+    }
+    .idées {
+        .interrogation {
+            img {
+                height: 80px;
+                width: 80px;
+            }
+        }
+        .contentIdées {
+            p {
+                width: 40%;
+                font-size: 15px;
+                margin: 0;
+            }
+        }
+    }
 }
 @media screen and (max-width: 525px) {
-  .navDisconnect {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-    #triangle-right {
-      display: none;
+    .intro {
+        height: auto;
+        flex-direction: column;
+        .connectIntro {
+            width: 70%;
+            margin-top: 30px;
+            h2 {
+                font-size: 5vw;
+                font-weight: bold;
+                color: white;
+            }
+            p {
+                font-size: 3vw;
+                color: white;
+            }
+            img {
+                height: 10px;
+                width: 10px;
+                margin: 2px;
+            }
+            button {
+                padding: 2px;
+                font-size: 10px;
+            }
+        }
+        img {
+            width: 60%;
+        }
     }
-    #triangle-left {
-      display: none;
+    .idées {
+        .interrogation {
+            height: 30%;
+            img {
+                height: 50px;
+                width: 50px;
+            }
+        }
+        .contentIdées {
+            flex-direction: column;
+            margin-top: 25px;
+            p {
+                width: 50%;
+                font-size: 10px;
+                margin: 0;
+            }
+            hr {
+                transform: rotate(90deg);
+                height: 200px;
+            }
+        }
     }
-  }
-  .intro {
-    height: auto;
-    flex-direction: column;
-    .connectIntro {
-      width: 70%;
-      margin-top: 30px;
-      margin-left: 10%;
-      img {
-        height: 10px;
-        width: 10px;
-        margin: 2px;
-      }
-      button {
-        padding: 2px;
-        font-size: 10px;
-      }
-    }
-    img {
-      width: 50%;
-    }
-  }
-  .idées {
-    .interrogation {
-      height: 30%;
-      img {
-        height: 50px;
-        width: 50px;
-      }
-    }
-    .contentIdées {
-      p {
-        width: 50%;
-        font-size: 10px;
-        margin: 0;
-      }
-    }
-  }
 }
