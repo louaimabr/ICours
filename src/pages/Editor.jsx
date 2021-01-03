@@ -3,8 +3,6 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import { Redirect } from "react-router-dom";
 import { MatiereContext } from "../providers/matiereProvider";
-//Image
-import pencil from '../img/pencil.svg'
 
 //Utils
 import { setLeçon } from "../utils/utils";
@@ -78,12 +76,6 @@ const Editor = (props) => {
       setNavigate(true);
     }
   };
-  if(currentMatiere){
-    const currentLecon = currentMatiere.leçon.find((l) => l.titre === title)
-    if(!currentLecon){
-      return <p>Oups liga liga liga oups</p>
-    }
-  }
   return (
     <>
       {modal && (
@@ -117,11 +109,16 @@ const Editor = (props) => {
             <span>{createdAt}</span>
           </div>
           <div className="pencil">
-            <img src={pencil} alt="Pencil" onClick={() => setDessin(true)}/>
+            <img src={require("../img/pencil.svg")} alt="Pencil" onClick={() => setDessin(true)}/>
           </div>
         </div>
         <button className="enregistrer" onClick={submitContent}>
-          Enregistrer
+          {!isChange ? (
+            <img src={require('../img/check.svg')} alt="Check" style={{ height : "40px", width : "40px" }}/>
+          ) : (
+          <p>Enregistrer</p>
+          )}
+          
         </button>
         <div style={{ display : 'flex' }}
           className="editorParent"

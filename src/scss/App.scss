@@ -428,6 +428,7 @@ svg {
         @include flexCenter();
     }
     .divTitleCourse {
+        justify-content: center;
         h3 {
             margin: 0;
             font-size: 3.5vw;
@@ -435,6 +436,9 @@ svg {
         }
         .titleDate {
             padding: 35px;
+        }
+        .pencil {
+            display: none;
         }
     }
     .formNote {

@@ -6,9 +6,9 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Application permettant de prendre des notes en cours facilement et gratuitement"
+      content="Application qui vous permer de prendre des notes en cours facilement et gratuitement"
     />
-    <title>ICours</title>
+    <title>ICours | Noter facilement</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -16,32 +16,5 @@
     <div id="root"></div>
     <div id="modalDessin"></div>
     <div id="modalForm"></div>
-
-    <script>
-      if (window.innerWidth > 525 && document.querySelector(".navDisconnect") !== null ) {
-        window.onscroll = function () {
-          scrollFunction();
-        };
-      }
-      function scrollFunction() {
-        const nav = document.querySelector(".navDisconnect").style;
-        if (
-          document.body.scrollTop > 80 ||
-          document.documentElement.scrollTop > 80
-        ) {
-          nav.width = "100vw";
-          nav.backgroundColor = "#2a1b3da4";
-          nav.position = "sticky";
-          nav.top = "0";
-          document.querySelector("#triangle-right").style.opacity = "0";
-          document.querySelector("#triangle-left").style.opacity = "0";
-        } else {
-          nav.width = "90vw";
-          nav.backgroundColor = "#2a1b3d";
-          document.querySelector("#triangle-right").style.opacity = "1";
-          document.querySelector("#triangle-left").style.opacity = "1";
-        }
-      }
-    </script>
   </body>
 </html>
