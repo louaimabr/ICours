@@ -138,6 +138,7 @@ const Form: FunctionComponent<IProps> = ({
           <option value="Management">Management</option>
           <option value="Gestion-Numérique">Gestion Numérique</option>
           <option value="Droit">Droit</option>
+          <option value="Science numérique et technologique">Science Numérique et Technologique</option>
         </select>
       </div>
       <div>

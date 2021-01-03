@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyAw_SbwNhqladza1HAjF8wUnJkvs_oovtg",
@@ -14,6 +15,7 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 export const firestore = firebase.firestore();
+export const storage = firebase.storage()
 //Authentication
 export const auth = firebase.auth();
 export const provider = new firebase.auth.GoogleAuthProvider();
@@ -33,7 +35,7 @@ export const createUserProfileDocument = async (
   const snapshot = await userRef.get();
 
   if (!snapshot.exists) {
-    const { displayName, email, photoURL } = user;
+    const { displayName, email, photoURL, uid } = user;
     const Year = new Date().getFullYear();
     const Month = new Date().getMonth();
     const Day = new Date().getDate();
@@ -44,6 +46,7 @@ export const createUserProfileDocument = async (
         email,
         photoURL,
         createdAt,
+        uid,
         ...additionalData,
       });
     } catch (err) {

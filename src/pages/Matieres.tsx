@@ -94,9 +94,11 @@ const Matieres: FC = () => {
         <div className="ListMatiere">
           {matieresLecon.length !== 0 ? (
             matieresLecon.map((m: MATIERE__STATE) => {
-              return (
-                <ListeMatieres key={m.matiere} matiereLecon={m} user={user} />
-              );
+              if(m.leçon.length !==0){
+                return (
+                  <ListeMatieres key={m.matiere} matiereLecon={m} user={user} />
+                );
+              }
             })
           ) : (
             <h2 className="errorLeçon">

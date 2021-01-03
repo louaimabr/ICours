@@ -3,19 +3,22 @@ import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import { Redirect } from "react-router-dom";
 import { MatiereContext } from "../providers/matiereProvider";
+//Image
+import pencil from '../img/pencil.svg'
 
 //Utils
 import { setLeçon } from "../utils/utils";
 import { editorConfig } from "../utils/configEditor"
 //Components
 import ModalConfirm from "../components/ModalConfirm";
+import Dessin from "../components/Dessin";
 
 const Editor = (props) => {
   //Handle Change Content
   const [currentContent, setCurrentContent] = useState(props.location.state ? props.location.state.cours.content : '' );
-
   //Si lutilisateur à changer qlq chose du contenu
   const [isChange, setIsChange] = useState(false);
+  const [dessin, setDessin] = useState(false);
   const [navigate, setNavigate] = useState(false);
   const [modal, setModal] = useState(false);
   
@@ -40,20 +43,32 @@ const Editor = (props) => {
     const data = editor.getData();
     setCurrentContent(data);
   };
-  //Enregistrer les données dans la bdd
+  //Enregistrer l'image et les données dans la bdd
+  const submitDessin = async (newContentDraw) =>{
+    //Avoir la leçon qu'on traite actuellement avant les changements depuis le contexte qui est lui synchro avec la bdd
+      let currentLeçon = currentMatiere.leçon.find((l) => l.titre === title);
+       if (currentLeçon){
+        //Si la leçon existe et si un changement a été effectué pour pas spam la bdd au cas ou
+        currentLeçon.content = newContentDraw;
+        await setLeçon(currentMatiere, user);
+        matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
+        setIsChange(false);
+        return;
+      }
+    return;
+  }
+    //Enregistrer les données dans la bdd
   const submitContent = async () => {
-    if (currentMatiere) {
       //Avoir la leçon qu'on traite actuellement avant les changements depuis le contexte qui est lui synchro avec la bdd
       let currentLeçon = currentMatiere.leçon.find((l) => l.titre === title);
-      //Si la leçon existe et si un changement a été effectué pour pas spam la bdd au cas ou
-      if (currentLeçon && currentLeçon.content !== currentContent) {
+       if (currentLeçon && currentLeçon.content !== currentContent){
+        //Si la leçon existe et si un changement a été effectué pour pas spam la bdd au cas ou
         currentLeçon.content = currentContent;
         await setLeçon(currentMatiere, user);
         matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
         setIsChange(false);
         return;
       }
-    }
     return;
   };
   const handleAlertHome = () => {
@@ -63,6 +78,12 @@ const Editor = (props) => {
       setNavigate(true);
     }
   };
+  if(currentMatiere){
+    const currentLecon = currentMatiere.leçon.find((l) => l.titre === title)
+    if(!currentLecon){
+      return <p>Oups liga liga liga oups</p>
+    }
+  }
   return (
     <>
       {modal && (
@@ -79,6 +100,9 @@ const Editor = (props) => {
           <button onClick={() => setNavigate(true)}>Quitter</button>
         </ModalConfirm>
       )}
+      {dessin && (
+        <Dessin setDessinFalse={() => setDessin(false)} currentContent={currentContent} setCurrentContent={setCurrentContent} currentLecon={() => currentMatiere.leçon.find((l) => l.titre === title)} submitDessin={submitDessin}/>
+      )}
       <div className="formNote">
         <div className="divTitleCourse">
           <div className="flecheGauche">
@@ -91,6 +115,9 @@ const Editor = (props) => {
           <div className="titleDate">
             <h3>{`${matiere} : ${title.toUpperCase()}`}</h3>
             <span>{createdAt}</span>
+          </div>
+          <div className="pencil">
+            <img src={pencil} alt="Pencil" onClick={() => setDessin(true)}/>
           </div>
         </div>
         <button className="enregistrer" onClick={submitContent}>

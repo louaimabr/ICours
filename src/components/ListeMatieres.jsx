@@ -22,11 +22,12 @@ const ListeMatieres = ({matiereLecon,user}) => {
         style={{ display: !displayList ? "none" : "block" }}
       >
         <ul>
-          {matiereLecon.leçon.map((currentLecon) => {
-            return(
-              <EachMatiere key={currentLecon.titre} user={user} matiereLecon={matiereLecon} lecon={currentLecon}/>
-            )
-            })
+          {
+              matiereLecon.leçon.map((currentLecon) => {
+                return(
+                  <EachMatiere key={currentLecon.titre} user={user} matiereLecon={matiereLecon} lecon={currentLecon}/>
+                )
+              })
           }
         </ul>
       </div>

@@ -35,8 +35,11 @@ import TableProperties from '@ckeditor/ckeditor5-table/src/tableproperties';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar.js';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation.js';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
-import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
-
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Image from '@ckeditor/ckeditor5-image/src/image';
+import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption';
+import ImageStyle from '@ckeditor/ckeditor5-image/src/imagestyle';
+import ImageResize from '@ckeditor/ckeditor5-image/src/imageresize';
 export const editorConfig ={
   plugins: [
     Alignment,
@@ -76,6 +79,10 @@ export const editorConfig ={
     TextTransformation,
     TodoList,
     Underline,
+    Image, 
+    ImageCaption, 
+    ImageStyle, 
+    ImageResize, 
   ],
   toolbar:[
     'undo',
@@ -106,7 +113,7 @@ export const editorConfig ={
     '|',
     'specialCharacters',
     'exportWord',
-    'exportPdf'
+    'exportPdf',
   ],
   language: 'fr',
   table: {
