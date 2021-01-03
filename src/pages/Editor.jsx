@@ -50,9 +50,8 @@ const Editor = (props) => {
         currentLeçon.content = newContentDraw;
         await setLeçon(currentMatiere, user);
         matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
-        setIsChange(false);
-        return;
       }
+      setIsChange(false);
     return;
   }
     //Enregistrer les données dans la bdd
@@ -64,9 +63,8 @@ const Editor = (props) => {
         currentLeçon.content = currentContent;
         await setLeçon(currentMatiere, user);
         matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
-        setIsChange(false);
-        return;
       }
+      setIsChange(false);
     return;
   };
   const handleAlertHome = () => {
@@ -109,14 +107,14 @@ const Editor = (props) => {
             <span>{createdAt}</span>
           </div>
           <div className="pencil">
-            <img src={require("../img/pencil.svg")} alt="Pencil" onClick={() => setDessin(true)}/>
+            <img src={require("../img/pencil.png")} alt="Pencil" onClick={() => setDessin(true)}/>
           </div>
         </div>
         <button className="enregistrer" onClick={submitContent}>
           {!isChange ? (
-            <img src={require('../img/check.svg')} alt="Check" style={{ height : "40px", width : "40px" }}/>
+            <img src={require('../img/check.png')} alt="Check" style={{ height : "40px", width : "40px" }}/>
           ) : (
-          <p>Enregistrer</p>
+            "Enregistrer"
           )}
           
         </button>

@@ -97,6 +97,10 @@ $orange: #eea9a1;
             border: none;
             color: white;
             padding: 5px;
+            border: 2px solid white;
+            &:hover {
+                background-color: #60319e;
+            }
         }
     }
     img {
