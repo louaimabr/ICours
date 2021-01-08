@@ -5,7 +5,7 @@ import Chargment from "./components/Chargment";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 //Pages
 import Comp from "./pages/Comp";
-import CompEditor from "./pages/CompEditor";
+import Editor from "./pages/Editor.jsx";
 import Matieres from "./pages/Matieres";
 import NotFound from "./pages/NotFound";
 //Context
@@ -19,9 +19,9 @@ ReactDOM.render(
       <CurrentLeçonProvider>
         <Suspense fallback={Chargment}>
           <BrowserRouter>
-            <Switch>
+            <Switch> 
               <Route exact path="/" component={Comp} />
-              <Route exact path="/leçon" component={CompEditor} />
+              <Route exact path="/leçon" component={Editor} />
               <Route exact path="/matieres" component={Matieres} />
               <Route component={NotFound}/>
             </Switch>

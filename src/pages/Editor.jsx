@@ -2,28 +2,33 @@ import React, { useContext, useState } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import { Redirect } from "react-router-dom";
+//Context
+import {CurrentLeconContext} from "../providers/currentLeçonProvider"
 import { MatiereContext } from "../providers/matiereProvider";
 
 //Utils
 import { setLeçon } from "../utils/utils";
 import { editorConfig } from "../utils/configEditor"
 //Components
-import ModalConfirm from "./ModalConfirm";
-import Dessin from "./Dessin";
+import ModalConfirm from "../components/ModalConfirm";
+import Dessin from "../components/Dessin";
+import NotFound from "./NotFound"
 
-const Editor = (props) => {
-  const {currentLeçon, _} = props
+const Editor = () => {
+  const {currentLeçon, _} = useContext(CurrentLeconContext)
   //Handle Change Content
   const [currentContent, setCurrentContent] = useState(currentLeçon.cours ? currentLeçon.cours.content : '' );
   //Si lutilisateur à changer qlq chose du contenu
   const [isChange, setIsChange] = useState(false);
+  //Aficher l'outil Dessin
   const [dessin, setDessin] = useState(false);
   const [navigate, setNavigate] = useState(false);
   const [modal, setModal] = useState(false);
   
   // Contexte de toutes les matieres from matieresProvider
   const {matieresLecon, setMatieresLecon} = useContext(MatiereContext);
- 
+  
+  if(Object.keys(currentLeçon).length === 0) return <NotFound />
   if (navigate) return <Redirect to="/matieres" />
   
   //Props with redirect {cours, user}
