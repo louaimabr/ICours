@@ -8,12 +8,13 @@ import { MatiereContext } from "../providers/matiereProvider";
 import { setLeçon } from "../utils/utils";
 import { editorConfig } from "../utils/configEditor"
 //Components
-import ModalConfirm from "../components/ModalConfirm";
-import Dessin from "../components/Dessin";
+import ModalConfirm from "./ModalConfirm";
+import Dessin from "./Dessin";
 
 const Editor = (props) => {
+  const {currentLeçon, _} = props
   //Handle Change Content
-  const [currentContent, setCurrentContent] = useState(props.location.state ? props.location.state.cours.content : '' );
+  const [currentContent, setCurrentContent] = useState(currentLeçon.cours ? currentLeçon.cours.content : '' );
   //Si lutilisateur à changer qlq chose du contenu
   const [isChange, setIsChange] = useState(false);
   const [dessin, setDessin] = useState(false);
@@ -21,18 +22,17 @@ const Editor = (props) => {
   const [modal, setModal] = useState(false);
   
   // Contexte de toutes les matieres from matieresProvider
-  const matieresContexte = useContext(MatiereContext);
-
-  if (!props.location.state || navigate) return <Redirect to="/matieres" />
+  const {matieresLecon, setMatieresLecon} = useContext(MatiereContext);
+ 
+  if (navigate) return <Redirect to="/matieres" />
   
   //Props with redirect {cours, user}
-  const { cours, user } = props.location.state;
+  const { cours, user } = currentLeçon;
   let { title, createdAt, matiere } = cours;
-
-  // La matiere qu'on traite actuellement avec cette leçon
-  const currentMatiere = matieresContexte.matieresLecon.find(
-    (m) => m.matiere === matiere
-  );
+ // La matiere qu'on traite actuellement avec cette leçon
+ const currentMatiere = matieresLecon.find(
+  (m) => m.matiere === matiere
+ );
   //handle Change
   const handleCkeditorState = (event, editor) => {
     if (!isChange) {
@@ -43,26 +43,22 @@ const Editor = (props) => {
   };
   //Enregistrer l'image et les données dans la bdd
   const submitDessin = async (newContentDraw) =>{
-    //Avoir la leçon qu'on traite actuellement avant les changements depuis le contexte qui est lui synchro avec la bdd
-      let currentLeçon = currentMatiere.leçon.find((l) => l.titre === title);
        if (currentLeçon){
         //Si la leçon existe et si un changement a été effectué pour pas spam la bdd au cas ou
         currentLeçon.content = newContentDraw;
         await setLeçon(currentMatiere, user);
-        matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
+        setMatieresLecon(matieresLecon);
       }
       setIsChange(false);
     return;
   }
     //Enregistrer les données dans la bdd
   const submitContent = async () => {
-      //Avoir la leçon qu'on traite actuellement avant les changements depuis le contexte qui est lui synchro avec la bdd
-      let currentLeçon = currentMatiere.leçon.find((l) => l.titre === title);
        if (currentLeçon && currentLeçon.content !== currentContent){
         //Si la leçon existe et si un changement a été effectué pour pas spam la bdd au cas ou
         currentLeçon.content = currentContent;
         await setLeçon(currentMatiere, user);
-        matieresContexte.setMatieresLecon(matieresContexte.matieresLecon);
+        setMatieresLecon(matieresLecon);
       }
       setIsChange(false);
     return;
@@ -91,7 +87,7 @@ const Editor = (props) => {
         </ModalConfirm>
       )}
       {dessin && (
-        <Dessin setDessinFalse={() => setDessin(false)} currentContent={currentContent} setCurrentContent={setCurrentContent} currentLecon={() => currentMatiere.leçon.find((l) => l.titre === title)} submitDessin={submitDessin}/>
+        <Dessin setDessinFalse={() => setDessin(false)} currentContent={currentContent} setCurrentContent={setCurrentContent} currentLecon={currentLeçon} submitDessin={submitDessin}/>
       )}
       <div className="formNote">
         <div className="divTitleCourse">

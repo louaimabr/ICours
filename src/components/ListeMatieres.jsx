@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import {Redirect} from 'react-router-dom'
 import {deleLeçon} from '../utils/utils'
 import ModalConfirm from "./ModalConfirm";
 
 
-const ListeMatieres = ({matiereLecon,user}) => {
+const ListeMatieres = ({matiereLecon,user, setCurrentLeçon}) => {
   const [displayList, setDisplayList] = useState(false);
   return (
     <>
@@ -23,9 +23,9 @@ const ListeMatieres = ({matiereLecon,user}) => {
       >
         <ul>
           {
-              matiereLecon.leçon.map((currentLecon) => {
+              matiereLecon.leçon.map((Lecon) => {
                 return(
-                  <EachMatiere key={currentLecon.titre} user={user} matiereLecon={matiereLecon} lecon={currentLecon}/>
+                  <EachMatiere key={Lecon.titre} user={user} matiereLecon={matiereLecon} lecon={Lecon} setCurrentLeçon={setCurrentLeçon}/>
                 )
               })
           }
@@ -34,9 +34,23 @@ const ListeMatieres = ({matiereLecon,user}) => {
     </>
   );
 };
-const EachMatiere = ({user,matiereLecon, lecon}) => {
+const EachMatiere = ({user,matiereLecon, lecon, setCurrentLeçon}) => {
   const [showModal, setShowModal] = useState(false)
-
+  const [redirect, setRedirect] = useState(false)
+  useEffect(() =>{
+    if(redirect){
+      setCurrentLeçon({
+        cours: {
+            title: lecon.titre,
+            content: lecon.content,
+            matiere: lecon.matiere,
+            createdAt: lecon.createdAt,
+        },
+        user
+    })
+    }
+  })
+  if(redirect) return <Redirect push to="/leçon"/>
   return (
     <div>
     {showModal && (
@@ -49,21 +63,7 @@ const EachMatiere = ({user,matiereLecon, lecon}) => {
         }}>Supprimmer</button>
       </ModalConfirm>
     )}
-    <Link
-      to={{
-        pathname: `${user.uid}/${lecon.matiere}/${lecon.titre}`,
-        state: {
-          cours: {
-            title: lecon.titre,
-            content: lecon.content,
-            matiere: lecon.matiere,
-            createdAt: lecon.createdAt,
-          },
-          user,
-        },
-      }}> 
-      <li>{lecon.titre.toUpperCase()}</li>
-      </Link>
+      <li onClick={() => setRedirect(true)}>{lecon.titre.toUpperCase()}</li>
       <button onClick={() => setShowModal(true)}>X</button>
   </div>
   );

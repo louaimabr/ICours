@@ -27,7 +27,7 @@ const CreateCourse: FC<IProps> = ({ modalTrue, user }) => {
         </div>
       </div>
       <div className="btnCreate">
-        <button onClick={modalTrue}> Créer un nouveau cours</button>
+        <button onClick={modalTrue}> Créer un nouveau <span>ICours</span></button>
       </div>
     </>
   );

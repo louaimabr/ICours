@@ -45,9 +45,35 @@ svg {
     font-size: 2.5vw;
 }
 .App {
-    background-color: $orange;
+    background-color: #eea9a1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cpolygon fill='%232a1b3d' points='957 450 539 900 1396 900'/%3E%3Cpolygon fill='%23d83f87' points='957 450 872.9 900 1396 900'/%3E%3Cpolygon fill='%232a1b3d' points='-60 900 398 662 816 900'/%3E%3Cpolygon fill='%23d83f87' points='337 900 398 662 816 900'/%3E%3Cpolygon fill='%232a1b3d' points='1203 546 1552 900 876 900'/%3E%3Cpolygon fill='%23d83f87' points='1203 546 1552 900 1162 900'/%3E%3Cpolygon fill='%232a1b3d' points='641 695 886 900 367 900'/%3E%3Cpolygon fill='%23d83f87' points='587 900 641 695 886 900'/%3E%3Cpolygon fill='%232a1b3d' points='1710 900 1401 632 1096 900'/%3E%3Cpolygon fill='%23d83f87' points='1710 900 1401 632 1365 900'/%3E%3Cpolygon fill='%232a1b3d' points='1210 900 971 687 725 900'/%3E%3Cpolygon fill='%23d83f87' points='943 900 1210 900 971 687'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
     height: 100vh;
     width: 100vw;
+}
+@keyframes cloudMoove {
+    0% {
+        transform: translateX(0px);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(0px);
+    }
+    75% {
+        transform: translateX(-10px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+.clouds {
+    animation-name: cloudMoove;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    transition: all 0.3s;
 }
 .navbar {
     background-color: $violet;
@@ -158,12 +184,21 @@ svg {
     width: 100%;
     @include flexCenter();
     button {
+        background-color: $bleu;
+        color: white;
         padding: 25px;
         border: none;
         border-radius: 5px;
-        z-index: 2;
+        box-shadow: 0px 2px 10px rgb(31, 31, 31);
+        transition: all 0.3s;
         &:hover {
-            background-color: rgb(255, 244, 244);
+            background-color: rgba(255, 244, 244, 0);
+            box-shadow: 0px 2px 50px rgb(31, 31, 31);
+            border: 3px solid white;
+        }
+        span {
+            color: rgb(255, 61, 40);
+            font-family: 'Permanent Marker', cursive;
         }
     }
 }
@@ -401,10 +436,10 @@ svg {
                 border-bottom-left-radius: 12px;
                 padding: 20px;
                 img {
-                    height: 70%;
+                    height: 100%;
                     border-radius: 50%;
                     border: 2px solid white;
-                    margin-bottom: 10px;
+                    margin-bottom: 5px;
                 }
                 div {
                     @include flexCenter();

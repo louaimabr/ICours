@@ -10,8 +10,7 @@ const Dessin = ({setDessinFalse,currentContent, setCurrentContent, currentLecon,
     const [spanRadius, setSpanRadius] = useState(10)
     const [titleDessin, setTitleDessin] = useState("")
     const user = useContext(UserContext)
-    const lecon = currentLecon()
-
+    const lecon = currentLecon.cours
     const getXY = (canvas, evt) => {
       const rect = canvas.getBoundingClientRect();
       const x = evt.clientX - rect.left;
@@ -78,7 +77,7 @@ const Dessin = ({setDessinFalse,currentContent, setCurrentContent, currentLecon,
               .ref()
               .child(`${user.displayName}-${user.uid}`)
               .child(lecon.matiere)
-              .child(lecon.titre)
+              .child(lecon.title)
               .child(titleDessin)
               .put(blob)
         const url = await response.ref.getDownloadURL(); 

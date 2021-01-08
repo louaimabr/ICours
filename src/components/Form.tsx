@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useContext, useState } from "react";
+import React, { FunctionComponent, useContext, useState,useEffect } from "react";
 import { firestore } from "../firebase";
 import { Redirect } from "react-router-dom";
 import { UserContext } from "../providers/userProvider";
 import { addLeçon, setMatiereDB } from "../utils/utils";
 import { MATIERE__STATE } from "./App";
+import {CurrentLeconContext} from "../providers/currentLeçonProvider"
 
 interface IProps {
   modalFalse: () => void;
@@ -26,7 +27,7 @@ const Form: FunctionComponent<IProps> = ({
   const [errRepeatleçon, setErrRepeatleçon] = useState(false);
 
   const user = useContext(UserContext);
-
+  const {_ , setCurrentLecon} = useContext(CurrentLeconContext)
   //Date de création de la leçon
   const Year = new Date().getFullYear();
   const Month = new Date().getMonth();
@@ -96,24 +97,20 @@ const Form: FunctionComponent<IProps> = ({
       handleSubmit(event)
     }
   }
-  if (redirect) {
-    return (
-      <Redirect
-        to={{
-          pathname: `${user.uid}/${newMatiere}/${newTitreCours}`,
-          state: {
-            cours: {
-              title: newTitreCours,
-              content: "",
-              matiere: newMatiere,
-              createdAt,
-            },
-            user: user,
-          },
-        }}
-      />
-    );
-  }
+  useEffect(() => {
+    if (redirect) {
+      setCurrentLecon({
+          cours: {
+            title: newTitreCours,
+            content: "",
+            matiere: newMatiere,
+            createdAt,
+          user: user,
+        },
+      })
+    }
+  })
+  if (redirect)return <Redirect to="/leçon"/>
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <h2>Commencez un nouveau cours</h2>
