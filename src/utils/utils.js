@@ -3,7 +3,7 @@ import { firestore } from "../firebase";
 export const setMatiereDB = async (user, setState) => {
   return await firestore
     .collection("users")
-    .doc(user.uid)
+    .doc(user.email)
     .collection("matieres")
     .get()
     .then((snap) => {
@@ -25,7 +25,7 @@ export const addLeçon = async (newCourse, matiereState, user) => {
   );
   firestore
     .collection("users")
-    .doc(user.uid)
+    .doc(user.email)
     .collection("matieres")
     .doc(newCourse.matiere)
     .set(matiereToAdd);
@@ -33,7 +33,7 @@ export const addLeçon = async (newCourse, matiereState, user) => {
 export const setLeçon = async (matiereToSet, user) => {
   await firestore
     .collection("users")
-    .doc(user.uid)
+    .doc(user.email)
     .collection("matieres")
     .doc(matiereToSet.matiere)
     .set(matiereToSet);
@@ -43,8 +43,14 @@ export const deleLeçon = async (matiereDelTitle,matiereLecon, user) =>{
   matiereLecon.leçon.splice(index, 1)
   await firestore
     .collection("users")
-    .doc(user.uid)
+    .doc(user.email)
     .collection("matieres")
     .doc(matiereLecon.matiere)
     .set(matiereLecon)
+}
+export const addFriend = async (email) =>{
+  const user = await firestore.collection('collection').doc('email')
+  user.onSnapshot((snap) =>{
+    console.log(snap.data())
+  })
 }

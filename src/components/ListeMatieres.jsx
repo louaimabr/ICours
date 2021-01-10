@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import {Redirect} from 'react-router-dom'
 import {deleLeçon} from '../utils/utils'
-import ModalConfirm from "./ModalConfirm";
+import ModalConfirm from "./Modal/ModalConfirm";
 
 
 const ListeMatieres = ({matiereLecon,user, setCurrentLeçon}) => {
@@ -60,7 +60,7 @@ const EachMatiere = ({user,matiereLecon, lecon, setCurrentLeçon}) => {
         <button onClick={async () => {
           await deleLeçon(lecon.titre, matiereLecon, user)
           setShowModal(false)
-        }}>Supprimmer</button>
+        }}>Supprimer</button>
       </ModalConfirm>
     )}
       <li onClick={() => setRedirect(true)}>{lecon.titre.toUpperCase()}</li>

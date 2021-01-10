@@ -13,14 +13,15 @@ const NavbarConnect: FC = () => {
         </Navbar.Brand>
         <hr/>
         <Navbar.Brand style={{ color: "white", fontFamily: '"Permanent Marker", cursive' }}>
-          ICours
+          IKours
         </Navbar.Brand>
       </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto ml-auto">
-            <Link to="/">Acceuil</Link>
+            <Link to="/">Accueil</Link>
             <Link to="/matieres">Leçon</Link>
+            {/* <Link to="/amis">Amis</Link> */}
             <Nav.Link  style={{ color: "white" }} href="https://louaimab.com/">A propos de moi</Nav.Link>
             <Nav.Link onClick={signOut} style={{ color: "red" }}>Déconnexion</Nav.Link>
           </Nav>

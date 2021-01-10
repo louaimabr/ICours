@@ -1,5 +1,5 @@
 import React from "react";
-import { signInWithGoogle } from "../firebase";
+import { signInWithGoogle } from "../../firebase";
 import NavbarDisconnect from "./NavbarDisconnect";
 const HomeDisconnect = () => {
   return (
@@ -9,15 +9,15 @@ const HomeDisconnect = () => {
         <div className="connectIntro">
           <h2>Simplifiez vous cours à distance </h2>
           <p>
-            ICours est une plateforme qui vous permet de prendre notes de vos
+            IKours est une plateforme qui vous permet de prendre notes de vos
             cours à distance facilement
           </p>
           <button onClick={signInWithGoogle}>
             Inscrivez / Connectez vous avec
-            <img src={require("../img/google.png")} alt="" /> gratuitement
+            <img src={require("../../img/google.png")} alt="" /> gratuitement
           </button>
         </div>
-        <img src={require("../img/pc.png")} alt="" />
+        <img src={require("../../img/pc.png")} alt="" />
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -32,7 +32,7 @@ const HomeDisconnect = () => {
       </svg>
       <div className="idées">
         <div className="interrogation">
-          <img src={require("../img/interro.svg")} alt="interrogation" />
+          <img src={require("../../img/interro.svg")} alt="interrogation" />
         </div>
         <div className="contentIdées">
           <p>Prenez des notes de vos cours et enregistrez les.</p>

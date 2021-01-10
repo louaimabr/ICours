@@ -8,6 +8,7 @@ import Comp from "./pages/Comp";
 import Editor from "./pages/Editor.jsx";
 import Matieres from "./pages/Matieres";
 import NotFound from "./pages/NotFound";
+// import CompFriends from "./pages/CompFriends";
 //Context
 import UserProvider from "./providers/userProvider";
 import MatiereProvider from "./providers/matiereProvider";
@@ -23,6 +24,7 @@ ReactDOM.render(
               <Route exact path="/" component={Comp} />
               <Route exact path="/leçon" component={Editor} />
               <Route exact path="/matieres" component={Matieres} />
+              {/* <Route exact path="/amis" component={CompFriends} /> */}
               <Route component={NotFound}/>
             </Switch>
           </BrowserRouter>

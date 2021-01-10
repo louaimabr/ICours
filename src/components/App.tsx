@@ -3,7 +3,7 @@ import "../scss/App.scss";
 //Components
 import NavbarConnect from "./Navbar";
 import CreateCourse from "./CreateCourse";
-import ModalForm from "./ModalForm";
+import ModalForm from "./Modal/ModalForm";
 import Form from "./Form";
 import SvgTemplate from "./SvgTemplate";
 //Interfaces

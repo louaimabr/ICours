@@ -10,7 +10,7 @@ import { MatiereContext } from "../providers/matiereProvider";
 import { setLeçon } from "../utils/utils";
 import { editorConfig } from "../utils/configEditor"
 //Components
-import ModalConfirm from "../components/ModalConfirm";
+import ModalConfirm from "../components/Modal/ModalConfirm";
 import Dessin from "../components/Dessin";
 import NotFound from "./NotFound"
 

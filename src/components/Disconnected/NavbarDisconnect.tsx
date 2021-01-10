@@ -6,9 +6,9 @@ const NavbarDisconnect = () => {
       <div id="triangle-right"></div>
       <div className="navCenter">
         <div>
-          <img src={require("../img/newLogo.png")} alt="Logo" />
+          <img src={require("../../img/newLogo.png")} alt="Logo" />
           <hr />
-          <h1>ICours</h1>
+          <h1>IKours</h1>
         </div>
         <a
           href="https://louaimab.com/"

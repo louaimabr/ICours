@@ -27,7 +27,7 @@ const Form: FunctionComponent<IProps> = ({
   const [errRepeatleçon, setErrRepeatleçon] = useState(false);
 
   const user = useContext(UserContext);
-  const {_ , setCurrentLecon} = useContext(CurrentLeconContext)
+  const {_ , setCurrentLeçon} = useContext(CurrentLeconContext)
   //Date de création de la leçon
   const Year = new Date().getFullYear();
   const Month = new Date().getMonth();
@@ -62,7 +62,7 @@ const Form: FunctionComponent<IProps> = ({
       };
       await firestore
         .collection("users")
-        .doc(user.uid)
+        .doc(user.email)
         .collection("matieres")
         .doc(newMatiere)
         .set(req);
@@ -99,7 +99,7 @@ const Form: FunctionComponent<IProps> = ({
   }
   useEffect(() => {
     if (redirect) {
-      setCurrentLecon({
+      setCurrentLeçon({
           cours: {
             title: newTitreCours,
             content: "",

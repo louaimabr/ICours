@@ -4,7 +4,7 @@ import { UserContext } from "../providers/userProvider";
 import { MatiereContext } from "../providers/matiereProvider";
 
 //Components
-import HomeDisconnect from "../components/HomeDisconnect";
+import HomeDisconnect from "../components/Disconnected/HomeDisconnect";
 
 export interface USER {
   uid: string;
@@ -12,6 +12,8 @@ export interface USER {
   displayName: string;
   email: string;
   createdAt: string;
+  friends : Array<any>
+  friendsReq : Array<any>
 }
 const Comp: FC = () => {
   const user: USER = useContext(UserContext);
