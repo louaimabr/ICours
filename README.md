@@ -1,5 +1,7 @@
 # iCours: Online Note-Taking Application Overview
 
+Application Link : https://ikours.netlify.app/
+
 iCours is a web application designed to help students take notes online efficiently. The notes are automatically saved to a Firebase database, ensuring secure and accessible storage.
 Features
 
@@ -12,3 +14,5 @@ Technologies Used
   React: Frontend framework for building a dynamic UI.
   Firebase: Backend-as-a-Service for database storage.
   CSS: For responsive and clean styling.
+
+Made in 2020
